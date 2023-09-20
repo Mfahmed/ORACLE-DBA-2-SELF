@@ -1,0 +1,44 @@
+ORACLE DBA CHEATSHEET
+
+User Management
+
+Create user: CREATE USER username IDENTIFIED BY password;
+Grant privileges: GRANT privilege TO user;
+Change user password: ALTER USER username IDENTIFIED BY password;
+List all users: SELECT * FROM DBA_USERS;
+List all roles: SELECT * FROM DBA_ROLES;
+Database Management
+
+Start database: STARTUP;
+Shutdown database: SHUTDOWN;
+Restart database: RESTART;
+Create database: CREATE DATABASE database_name;
+Drop database: DROP DATABASE database_name;
+Create tablespace: CREATE TABLESPACE tablespace_name DATAFILE 'path/to/datafile';
+Drop tablespace: DROP TABLESPACE tablespace_name;
+Backup and Recovery
+
+Create full backup: RMAN BACKUP DATABASE;
+Create incremental backup: RMAN BACKUP INCREMENTAL LEVEL 1 DATABASE;
+Restore database from full backup: RMAN RESTORE DATABASE FROM BACKUP;
+Restore database from incremental backup: RMAN RESTORE DATABASE FROM BACKUP;
+Recover database to a specific point in time: RMAN RECOVER DATABASE TO POINT IN TIME '2023-09-20 15:15:00';
+Performance Tuning
+
+Gather statistics: BEGIN GATHER_DATABASE_STATS; END;
+Analyze database: BEGIN ANALYZE TABLE all_tables; END;
+Create index: CREATE INDEX index_name ON table_name (column1, column2, ...);
+Drop index: DROP INDEX index_name;
+Change table parameters: ALTER TABLE table_name ADD PCTFREE 20;
+Monitoring
+
+View database status: SELECT STATUS FROM V$INSTANCE;
+View active sessions: SELECT SID, SERIAL#, USERNAME, MACHINE, STATUS FROM V$SESSION;
+View top SQL statements: SELECT sql_id, SQL_TEXT, executions, elapsed_time FROM V$SQLAREA ORDER BY elapsed_time DESC;
+Other Useful Commands
+
+Flashback table: FLASHBACK TABLE table_name TO BEFORE DROP;
+Flashback query: SELECT * FROM table_name AS OF TIMESTAMP '2023-09-20 15:15:00';
+Create scheduler job: CREATE JOB job_name EXECUTE PROCEDURE procedure_name;
+Disable scheduler job: ALTER JOB job_name ENABLE NO;
+View scheduler jobs: SELECT * FROM DBA_SCHEDULER_JOBS;
