@@ -1,0 +1,60 @@
+**Oracle DBA Cheat Sheet**
+
+**User Management**
+
+* Create user: `CREATE USER username IDENTIFIED BY password;`
+* Grant privileges: `GRANT privilege TO user;`
+* Change password: `ALTER USER username IDENTIFIED BY password;`
+* List all users: `SELECT USERNAME, ACCOUNT_STATUS, PROFILE FROM DBA_USERS;`
+
+**Database Management**
+
+* Start database: `startup;`
+* Shut down database: `shutdown immediate;`
+* Create database: `CREATE DATABASE database_name;`
+* Drop database: `DROP DATABASE database_name;`
+* Create tablespace: `CREATE TABLESPACE tablespace_name DATAFILE '/path/to/datafile';`
+* Drop tablespace: `DROP TABLESPACE tablespace_name;`
+
+**Backup and Recovery**
+
+* Create backup: `RMAN BACKUP DATABASE;`
+* Restore backup: `RMAN RESTORE DATABASE;`
+* Flashback database: `FLASHBACK DATABASE TO TIMESTAMP timestamp;`
+* Flashback table: `FLASHBACK TABLE table_name TO TIMESTAMP timestamp;`
+
+**Performance Tuning**
+
+* Gather statistics: `GATHER TABLE table_name;`
+* Analyze table: `ANALYZE TABLE table_name;`
+* Create index: `CREATE INDEX index_name ON table_name (column_name);`
+* Drop index: `DROP INDEX index_name;`
+* Enable automatic tuning: `ALTER SYSTEM SET AUTOMATIC_TUNING = ON;`
+
+**Monitoring**
+
+* View V$ views: `SELECT * FROM V$PARAMETER;`
+* Use AWR reports: `ALTER SESSION SET STATISTICS_LEVEL = ALL;`
+* Use ADRCI: `ADRCI;`
+
+**Troubleshooting**
+
+* View alert log: `ALTER SYSTEM SET ALERTS_LOGFILE = '/path/to/alert_log';`
+* Use trace files: `ALTER SESSION SET SQL_TRACE = TRUE;`
+* Use the `DBMS_SUPPORT` package: `DECLARE
+  l_handle DBMS_SUPPORT.HANDLE;
+BEGIN
+  l_handle := DBMS_SUPPORT.CREATE_HANDLE;
+  DBMS_SUPPORT.DUMP_STACK(l_handle);
+  DBMS_SUPPORT.CLOSE_HANDLE(l_handle);
+END;`
+
+**Other Useful Commands**
+
+* List all tablespaces: `SELECT TABLESPACE_NAME FROM DBA_TABLESPACES;`
+* List all users' privileges: `SELECT USERNAME, GRANTED_ROLE FROM DBA_ROLE_PRIVS;`
+* List all open cursors: `SELECT SID, SERIAL#, SQL_ID FROM V$OPEN_CURSOR;`
+* Kill a session: `ALTER SYSTEM KILL SESSION 'sid,serial#';`
+* Start a database in single-user mode: `startup upgrade;`
+
+This is just a basic cheat sheet, and there are many other useful Oracle DBA commands and techniques. For more information, please consult the Oracle documentation.
