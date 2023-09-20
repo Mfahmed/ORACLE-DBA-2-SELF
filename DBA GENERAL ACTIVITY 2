@@ -1,0 +1,133 @@
+Oracle DBA Cheat Sheet
+
+General
+
+Start/stop database:
+SQL
+STARTUP;
+SHUTDOWN IMMEDIATE;
+Use code with caution. Learn more
+Restart database:
+SQL
+SHUTDOWN IMMEDIATE;
+STARTUP;
+Use code with caution. Learn more
+Check database status:
+SQL
+SELECT status FROM v$instance;
+Use code with caution. Learn more
+Connect to database:
+SQL
+sqlplus username/password
+Use code with caution. Learn more
+Disconnect from database:
+SQL
+EXIT;
+Use code with caution. Learn more
+User Management
+
+Create user:
+SQL
+CREATE USER username IDENTIFIED BY password;
+Use code with caution. Learn more
+Grant privileges:
+SQL
+GRANT privilege TO user;
+Use code with caution. Learn more
+Change user password:
+SQL
+ALTER USER username IDENTIFIED BY password;
+Use code with caution. Learn more
+Drop user:
+SQL
+DROP USER username;
+Use code with caution. Learn more
+Schema Management
+
+Create table:
+SQL
+CREATE TABLE table_name (
+  column_name1 data_type1,
+  column_name2 data_type2,
+  ...
+);
+Use code with caution. Learn more
+Drop table:
+SQL
+DROP TABLE table_name;
+Use code with caution. Learn more
+Create index:
+SQL
+CREATE INDEX index_name ON table_name (column_name);
+Use code with caution. Learn more
+Drop index:
+SQL
+DROP INDEX index_name;
+Use code with caution. Learn more
+Create view:
+SQL
+CREATE VIEW view_name AS SELECT column_name1, column_name2, ... FROM table_name;
+Use code with caution. Learn more
+Drop view:
+SQL
+DROP VIEW view_name;
+Use code with caution. Learn more
+Backup and Recovery
+
+Back up database:
+SQL
+RMAN BACKUP DATABASE;
+Use code with caution. Learn more
+Restore database:
+SQL
+RMAN RESTORE DATABASE;
+Use code with caution. Learn more
+Monitoring
+
+View database performance statistics:
+SQL
+SELECT * FROM v$sysstat;
+Use code with caution. Learn more
+View database locks:
+SQL
+SELECT * FROM v$lock;
+Use code with caution. Learn more
+View database sessions:
+SQL
+SELECT * FROM v$session;
+Use code with caution. Learn more
+Troubleshooting
+
+Troubleshoot database startup errors:
+SQL
+SELECT * FROM v$instance_recovery;
+Use code with caution. Learn more
+Troubleshoot database performance problems:
+SQL
+ASH REPORT;
+Use code with caution. Learn more
+Troubleshoot database errors:
+SQL
+ALTER SYSTEM DUMP DATAFILE;
+Use code with caution. Learn more
+Additional Commands
+
+View all database users:
+SQL
+SELECT username FROM dba_users;
+Use code with caution. Learn more
+View all database roles:
+SQL
+SELECT role FROM dba_roles;
+Use code with caution. Learn more
+View all database tables:
+SQL
+SELECT table_name FROM dba_tables;
+Use code with caution. Learn more
+View all database indexes:
+SQL
+SELECT index_name FROM dba_indexes;
+Use code with caution. Learn more
+View all database views:
+SQL
+SELECT view_name FROM dba_views;
